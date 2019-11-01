@@ -237,18 +237,7 @@ function createConnection(opts) {
         " implementation as parameter, for example: { Promise: require('bluebird') }"
     );
   }
-  return new Promise((resolve, reject) => {
-    coreConnection.once('connect', () => {
-      resolve(new PromiseConnection(coreConnection, Promise));
-    });
-    coreConnection.once('error', err => {
-      createConnectionErr.message = err.message;
-      createConnectionErr.code = err.code;
-      createConnectionErr.errno = err.errno;
-      createConnectionErr.sqlState = err.sqlState;
-      reject(createConnectionErr);
-    });
-  });
+  return new PromiseConnection(coreConnection, Promise));
 }
 
 // note: the callback of "changeUser" is not called on success
