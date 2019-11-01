@@ -237,7 +237,7 @@ function createConnection(opts) {
         " implementation as parameter, for example: { Promise: require('bluebird') }"
     );
   }
-  return new PromiseConnection(coreConnection, Promise));
+  return new PromiseConnection(coreConnection, Promise);
 }
 
 // note: the callback of "changeUser" is not called on success
